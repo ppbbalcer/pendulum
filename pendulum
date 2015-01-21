@@ -1,0 +1,18 @@
+#!/bin/bash
+while true
+do
+	read -p "Delta time multiplier: " -e -i 1 dt_mul
+	read -p "Initial pendulum angle (d): " -e -i 80 alpha
+	read -p "Pendulum length (m): " -e -i 3 length
+	read -p "Spring height (px): " -e -i 100 separation
+	read -p "Spring constant (N/px): " -e -i 8 tightness
+	read -p "Spring damping (N/px): " -e -i 2 damping
+
+	./pendulum.bin $dt_mul $alpha $length $separation $tightness $damping
+	read -p "Go again? [Y/n] " yn
+	case $yn in
+		[Yy]* ) continue; break;;
+		* ) exit;;
+	esac
+done
+
